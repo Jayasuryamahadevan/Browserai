@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saturn Browser</title>
+  <!-- Elite Typography: Inter + Orbitron (Futuristic) from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <script>
+    console.log('Index HTML loaded');
+    window.onerror = function (msg, url, line, col, error) {
+      console.error('SCRIPT ERROR:', msg, 'at', url, line, col, error);
+      document.body.innerHTML = '<h1 style="color: red; padding: 20px;">Script Error: ' + msg + '</h1>';
+      return true;
+    };
+  </script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
