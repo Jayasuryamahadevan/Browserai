@@ -24,12 +24,13 @@
 
     // Configuration - User Requirements
     const CONFIG = {
-        MIN_TIME_MS: 10000,           // 10 seconds minimum dwell time
-        MIN_SCROLL_COUNT: 2,          // At least 2 scroll events required
-        MIN_CONTENT_LENGTH: 200,      // Minimum characters
+        MIN_TIME_MS: 0,               // Immediate storage (removed 10s delay)
+        MIN_SCROLL_COUNT: 0,          // Immediate storage (removed scroll requirement)
+        MIN_CONTENT_LENGTH: 200,      // Minimum characters (keep for quality)
         CHECK_INTERVAL_MS: 3000,      // Check every 3 seconds
         MEMORY_ENGINE_URL: 'http://127.0.0.1:7420',
     };
+
 
     // State
     const state = {
@@ -169,6 +170,10 @@
 
     // Start checking
     setInterval(checkEngagement, CONFIG.CHECK_INTERVAL_MS);
+
+    // Initial save attempt right after opening (2s delay to allow some rendering)
+    setTimeout(saveMemory, 2000);
+
 
     // Also save on page unload if engaged enough
     window.addEventListener('beforeunload', () => {
